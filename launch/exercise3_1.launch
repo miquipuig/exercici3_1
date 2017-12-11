@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+  <group ns="masteruvic">
+    <!-- Carreguem paràmetres -->
+    <rosparam command="load" file="$(find integracio3_1)/param.yaml" />
+  </group>
+  <!-- Cridem rviz -->
+  <node name="rviz" pkg="rviz" type="rviz"/>
+  <!-- Incluim usb_cam -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+  <!-- Incloc el urdf -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find integracio3_1)/urdf/integracio_arm.urdf'" />
+</launch>
+  
